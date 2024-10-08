@@ -5,17 +5,27 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
-import "./Estilos/AppBar.css";
+import "./AppBar.css";
+import { useNavigate } from "react-router-dom";
+import UserToken from "../token/token";
 
-function MyAppBar(props) {
-  const usuario = props.usuarioHome;
-  console.log("user", props.usuarioHome);
+function MyAppBar() {
+  const navigate = useNavigate();
+
+  const cleats = () => {
+    navigate("/cleats");
+  };
+
+  const homeButton = () => {
+    navigate("/home");
+  };
+
   return (
-    <>
-      <AppBar className="AppBar" position="static" sx={{ background: "white" }}>
+    <div className="root">
+      <AppBar className="AppBar" position="sticky" sx={{ background: "white" }}>
         <Toolbar>
           <Box className="AB-icono">
-            <IconButton>
+            <IconButton onClick={homeButton}>
               <img
                 className="AB-img"
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Florida_Gators_gator_logo.svg/1200px-Florida_Gators_gator_logo.svg.png"
@@ -23,15 +33,36 @@ function MyAppBar(props) {
             </IconButton>
           </Box>
 
+          <Box className="options">
+            <button onClick={cleats}>Cleats</button>
+            <button>Shorts</button>
+            <button>T-Shirt</button>
+          </Box>
+
           <Box className="AB-avatar">
-            <Avatar src="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/19/1463047534-james-mcavoy-charles-xavier-x-men-apocalypse.jpg?resize=640:*" />
-            <Typography variant="subtitle1" color="black">
-              {usuario}
+            <Avatar
+              sx={{ marginRight: "15px", marginTop: "8px" }}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0zQLc56Xb5CRFBDe9uEeutJuqglVeUffhqQ&s"
+              // src="https://www.dpciwholesale.com/images/D/_2287511.JPG"
+            />
+            <Typography
+              className="user"
+              variant="subtitle1"
+              color="black"
+              sx={{
+                marginTop: "3px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              {UserToken()}
+              <Typography>Activo</Typography>
             </Typography>
           </Box>
         </Toolbar>
       </AppBar>
-    </>
+    </div>
   );
 }
 

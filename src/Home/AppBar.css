@@ -1,0 +1,56 @@
+.root {
+  display: grid;
+  grid-template-columns: 10vw 80vw 10vw;
+  grid-template-rows: 100px;
+}
+
+.AppBar {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  max-height: 100px;
+  background-color: white;
+  border-bottom: 3px solid rgb(250, 70, 22);
+  overflow: hidden;
+}
+
+.AB-img {
+  display: flex;
+  height: 70px;
+  margin-top: 5px;
+  margin-left: 1vw;
+  aspect-ratio: 3/2;
+}
+
+.AB-icono {
+  margin-left: 0px;
+  margin-right: 3vw;
+}
+
+.options {
+  display: flex;
+  gap: 9vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.options button {
+  border: none;
+  background: none; /* Elimina el fondo del botón */
+  font-size: 24px; /* Tamaño de la fuente */
+  font-weight: bold;
+  font-size: large;
+}
+
+.options button:hover {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgb(250, 70, 22);
+}
+
+.AB-avatar {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  margin-right: 10px;
+  justify-content: center;
+}

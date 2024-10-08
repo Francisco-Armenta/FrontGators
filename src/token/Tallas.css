@@ -1,0 +1,31 @@
+.Tsize {
+  display: flex;
+  flex-direction: row;
+  max-width: 40vw;
+  flex-wrap: wrap;
+  gap: 1vh;
+}
+
+.size {
+  min-width: 5vw;
+  max-width: 5vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 6vh;
+  border: 2px solid rgba(200, 200, 200, 0.5);
+  background-color: rgba(200, 200, 200, 0.3);
+  border-radius: 3px;
+}
+
+.size:hover {
+  background-color: rgba(200, 200, 200, 0.6);
+  cursor: pointer;
+}
+
+.size.active {
+  background-color: rgba(0, 33, 165, 0.5);
+}
+
+.size.active:hover {
+  background-color: rgba(0, 33, 165, 0.5);
+}

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
-import AppBar from "./Home/AppBar";
-import MyAppBar from "./Home/AppBar";
 
 function Login() {
   const [usuario, setUsuario] = useState("");
@@ -11,20 +9,27 @@ function Login() {
   const [loginStatus, setLoginStatus] = useState();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, []);
+
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log("Entre");
+
     try {
-      console.log(usuario);
-      console.log(password);
       const data = {
         usuario: usuario,
         password: password,
       };
       const user = await axios.post("http://localhost:3000/login", data);
-      console.log(user);
-      navigate("/home", { state: { usuario } });
 
+      const token = user.data.body;
+      localStorage.setItem("token", token);
+
+      navigate("/home");
       setLoginStatus(true);
     } catch (err) {
       console.log(err);
